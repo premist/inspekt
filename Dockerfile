@@ -6,7 +6,8 @@ RUN cargo build --release
 FROM alpine:3.9
 WORKDIR /root/
 COPY --from=build /tmp/inspekt/target/x86_64-unknown-linux-musl/release/inspekt .
-COPY --from-build /tmp/inspekt/templates .
+COPY --from=build /tmp/inspekt/templates .
 
+ENV ROCKET_ENV production
 EXPOSE 8000
 CMD ["./inspekt"]
