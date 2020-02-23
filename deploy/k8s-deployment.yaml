@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inspekt-deployment
+  labels:
+    app: inspekt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inspekt
+  template:
+    metadata:
+      labels:
+        app: inspekt
+    spec:
+      containers:
+        - name: inspekt
+          image: premist/inspekt:latest
+          ports:
+            - containerPort: 8000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 3
+            periodSeconds: 3
