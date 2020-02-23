@@ -15,16 +15,13 @@ fn get_env_var(env_var: &str) -> String {
 
 #[get("/")]
 fn index() -> Template {
-    let a = get_env_var("YOLOSWAG");
     
-    // let retval = format!("Yoloswag value: {}", a);
-    // retval
-
     let mut context = HashMap::<String, String>::new();
-    context.insert(
-        "yoloswag".to_string(),
-        "aaaaa".to_string()
-    );
+    let downward_values = ["NODE_NAME","HOST_IP","POD_NAME","POD_NAMESPACE"];
+
+    for val in downward_values.iter() {
+        context.insert(val.to_string(), get_env_var(val));
+    }
     
     return Template::render("index", &context);
 }
