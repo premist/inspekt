@@ -1,7 +1,7 @@
 inspekt
 =======
 
-!(Image build status)[https://img.shields.io/docker/cloud/build/premist/inspekt.svg]
+![Image build status](https://img.shields.io/docker/cloud/build/premist/inspekt.svg)
 
 Inspekt is a simple web service that shows Kubernetes pod and node information via [Downward API](https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/#the-downward-api), built with Rust.
 
