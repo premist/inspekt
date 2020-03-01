@@ -13,7 +13,7 @@ Inspekt is a simple web service that shows Kubernetes pod and node information v
 Use [Kustomize](https://kustomize.io) to apply deployment and service at once.
 
 ```bash
-kubectl apply -k https://raw.githubusercontent.com/premist/inspekt/master/deploy/kustomization.yaml
+kubectl apply -k github.com/premist/inspekt
 ```
 
 Or, use [deployment and service yamls](deploy/) for deployment to Kubernetes.
