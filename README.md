@@ -10,11 +10,17 @@ Inspekt is a simple web service that shows Kubernetes pod and node information v
 
 ### Up and running
 
-Use [pre-built yamls](deploy/) for deployment to Kubernetes.
+Use [Kustomize](https://kustomize.io) to apply deployment and service at once.
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/premist/inspekt/master/deploy/k8s-deployment.yaml
-kubectl apply -f https://raw.githubusercontent.com/premist/inspekt/master/deploy/k8s-service.yaml
+kubectl apply -k https://raw.githubusercontent.com/premist/inspekt/master/deploy/kustomization.yaml
+```
+
+Or, use [deployment and service yamls](deploy/) for deployment to Kubernetes.
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/premist/inspekt/master/deploy/deployment.yaml
+kubectl apply -f https://raw.githubusercontent.com/premist/inspekt/master/deploy/service.yaml
 ```
 
 Alternatively, you can use [Docker image](https://hub.docker.com/repository/docker/premist/inspekt) directly, although it is not recommended as environment variables need to be provided via Downward API.
