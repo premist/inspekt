@@ -5,6 +5,7 @@
 use std::env;
 use std::collections::HashMap;
 use rocket_contrib::templates::Template;
+use rocket_prometheus::PrometheusMetrics;
 
 fn get_env_var(env_var: &str) -> String {
     return match env::var(env_var) {
@@ -27,7 +28,11 @@ fn index() -> Template {
 }
 
 fn main() {
+    let prometheus = PrometheusMetrics::new();
+
     rocket::ignite()
+        .attach(prometheus.clone())
+        .mount("/metrics", prometheus)
         .attach(Template::fairing())
         .mount("/", routes![index])
         .launch();
